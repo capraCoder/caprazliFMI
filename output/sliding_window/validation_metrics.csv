@@ -1,0 +1,11 @@
+"metric","value"
+"N_stocks",209
+"N_collapsed",92
+"N_healthy",117
+"Sensitivity",89.1304347826087
+"Specificity",39.3162393162393
+"PPV",53.5947712418301
+"NPV",82.1428571428571
+"Accuracy",61.244019138756
+"ROC_AUC",0.554951690821256
+"Optimal_threshold",2.65
