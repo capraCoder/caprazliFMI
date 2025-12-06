@@ -1,22 +1,28 @@
-FROM rocker/r-ver:4.3.2
+# Base image: RStudio + R (Official Rocker image)
+FROM rocker/rstudio:latest
 
-LABEL maintainer="CaprazliFMI"
+# METADATA
+LABEL maintainer="Kafkas M. Caprazli <caprazli@gmail.com>"
+LABEL version="2.0.0"
+LABEL description="Caprazli FMI Pipeline Container"
 
-# Install system dependencies
+# 1. Install System Dependencies (Linux libraries needed for R packages)
+# 'libxml2' and 'libcurl' are needed for Tidyverse/TropFishR
 RUN apt-get update && apt-get install -y \
+    libxml2-dev \
     libcurl4-openssl-dev \
     libssl-dev \
-    libxml2-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
-WORKDIR /app
+# 2. Install R Packages (The Science Engine)
+# We install 'remotes' first to ensure we can fetch specific versions if needed
+RUN R -e "install.packages(c('ggplot2', 'dplyr', 'readr', 'TropFishR', 'remotes'), repos='http://cran.rstudio.com/')"
 
-# Copy project files
-COPY . /app
+# 3. Setup Working Directory
+WORKDIR /home/rstudio/caprazliFMI
 
-# Install R packages (add packages as needed)
-# RUN R -e "install.packages(c('tidyverse', 'data.table'), repos='https://cloud.r-project.org')"
+# 4. Copy Your Code into the Container
+COPY . /home/rstudio/caprazliFMI
 
-# Default command
-CMD ["R"]
+# 5. Default Command: Run the Analysis automatically if container starts
+CMD ["Rscript", "R/run_analysis.R"]
