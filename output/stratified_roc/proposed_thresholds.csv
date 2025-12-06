@@ -1,0 +1,5 @@
+"life_history","M_range","n_stocks","optimal_threshold","E_equivalent","auc"
+"Long-lived (M<0.2)","< 0.2",104,4.91,0.831,0.794
+"Medium (0.2-0.4)","0.2 - 0.4",72,2.15,0.683,0.788
+"Moderate (0.4-0.8)","0.4 - 0.8",16,2.45,0.71,0.855
+"Fast turnover (M≥0.8)",">= 0.8",17,0.45,0.31,0.708
