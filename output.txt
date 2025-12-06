@@ -1,0 +1,31 @@
+ Volume in drive C is Windows
+ Volume Serial Number is 1A79-191A
+
+ Directory of C:\Users\capra\caprazliFMI
+
+06-Dec-2025  09:39    <DIR>          .
+06-Dec-2025  09:37    <DIR>          ..
+06-Dec-2025  09:38               258 CaprazliFMI.Rproj
+06-Dec-2025  09:38    <DIR>          data
+06-Dec-2025  09:37               472 Dockerfile
+06-Dec-2025  09:39                 0 output.txt
+06-Dec-2025  09:38    <DIR>          R
+               3 File(s)            730 bytes
+
+ Directory of C:\Users\capra\caprazliFMI\data
+
+06-Dec-2025  09:38    <DIR>          .
+06-Dec-2025  09:39    <DIR>          ..
+06-Dec-2025  09:38                 0 .gitkeep
+               1 File(s)              0 bytes
+
+ Directory of C:\Users\capra\caprazliFMI\R
+
+06-Dec-2025  09:38    <DIR>          .
+06-Dec-2025  09:39    <DIR>          ..
+06-Dec-2025  09:38                 0 .gitkeep
+               1 File(s)              0 bytes
+
+     Total Files Listed:
+               5 File(s)            730 bytes
+               8 Dir(s)  1,634,563,665,920 bytes free
