@@ -1,0 +1,5 @@
+"life_history","n_stocks","M_range","example_species"
+"Long-lived (M < 0.2)",148,"0.02 - 0.2","Acadian redfish"
+"Medium-lived (0.2 ≤ M < 0.4)",123,"0.2 - 0.38","Albacore tuna"
+"Moderate turnover (0.4 ≤ M < 0.8)",37,"0.4 - 0.78","Shallow water cape hake"
+"Fast turnover (M ≥ 0.8)",36,"0.85 - 2.41","Atlantic menhaden"
