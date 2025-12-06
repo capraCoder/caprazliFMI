@@ -1,0 +1,17 @@
+"stockid","commonname","region","M","life_history","year_start","year_end","n_years","FMI_mean","FMI_max","FMI_min","first_breach_caution","first_breach_warning","first_breach_danger","years_safe","years_caution","years_warning","years_danger","peak_FMI_year","ever_breached_danger","pct_danger","priority"
+"COD3Pn4RS","Atlantic cod","Canada East Coast",1.1,"Fast turnover (M ≥ 0.8)",1974,2018,45,0.388280745737374,1.78181818181818,0.0272727272727273,1992,1992,1993,43,0,1,1,1993,TRUE,2.2,1
+"COD4X5Yb","Atlantic cod","Canada East Coast",1.285,"Fast turnover (M ≥ 0.8)",1980,2017,38,0.294245340978906,0.863813229571985,0.0326848249027237,1992,NA,NA,37,1,0,0,1992,FALSE,0,1
+"MENATLAN","Atlantic menhaden","US East Coast",1.25,"Fast turnover (M ≥ 0.8)",1955,2021,67,0.849449719402985,5.664,0.1279976,1955,1955,1955,41,10,8,8,1956,TRUE,11.9,2
+"MENATGM","Gulf menhaden","US Southeast and Gulf",2.11,"Fast turnover (M ≥ 0.8)",1977,2020,44,2.26337775314428,6.54028436018957,0.0978106112865754,1977,1977,1977,11,0,4,29,1984,TRUE,65.9,2
+"COWCODSCAL","Cowcod","US West Coast",0.06,"Long-lived (M < 0.2)",1900,2018,119,5.71078431372549,15.65,0,1902,1903,1903,20,3,0,96,1986,TRUE,80.7,1
+"ATHAL5YZ","Atlantic halibut","US East Coast",0.15,"Long-lived (M < 0.2)",1800,2007,208,0.749967948717949,4.46,0,1880,1885,1888,121,25,26,36,1896,TRUE,17.3,2
+"RSNAPGM","Red snapper","US Southeast and Gulf",0.09,"Long-lived (M < 0.2)",1872,2016,145,0.554260536398467,1.77777777777778,0.00555555555555556,1958,1959,1967,96,6,8,35,1986,TRUE,24.1,2
+"LINGCODNPCOAST","Lingcod","US West Coast",0.18,"Long-lived (M < 0.2)",1889,2020,132,1.28208627912458,5.01011111111111,0.0319444444444444,1938,1940,1942,60,13,8,51,1991,TRUE,38.6,2
+"CODIS","Atlantic cod","European Union",0.2,"Medium-lived (0.2 ≤ M < 0.4)",1968,2019,52,5.15247394548077,9.4,0.1415,1968,1968,1968,2,0,1,49,2006,TRUE,94.2,1
+"HERR4VWX","Herring","Canada East Coast",0.2,"Medium-lived (0.2 ≤ M < 0.4)",1965,2012,48,3.1384375,12.3,0.505,1966,1966,1966,5,3,3,37,2004,TRUE,77.1,1
+"LNOSESKAPCOAST","Longnose skate","US West Coast",0.2,"Medium-lived (0.2 ≤ M < 0.4)",1915,2018,104,0.916153846153846,2.395,0,1952,1972,1979,52,5,13,34,1997,TRUE,32.7,2
+"TIGERFLATSE","Tiger flathead","Australia",0.235,"Medium-lived (0.2 ≤ M < 0.4)",1913,2015,103,1.45811609171659,5.1063829787234,0,1930,1936,1944,29,11,11,52,2004,TRUE,50.5,2
+"DEEPCHAKESA","Deep water cape hake","Southern Africa",0.569,"Moderate turnover (0.4 ≤ M < 0.8)",1900,2020,121,0.495127017095383,2.27768014059754,0,1963,1965,1966,74,28,12,7,1972,TRUE,5.8,2
+"CRLOBSTERSA12","West coast rock lobster","Southern Africa",0.5825,"Moderate turnover (0.4 ≤ M < 0.8)",1910,2020,111,0.268230093159712,3.83050705288616,0.0124779158798283,1964,1964,1965,105,0,1,5,1967,TRUE,4.5,2
+"CRLOBSTERSA7","West coast rock lobster","Southern Africa",0.5825,"Moderate turnover (0.4 ≤ M < 0.8)",1910,2020,111,0.185710127514239,1.98688481732424,0.00714573933458053,2010,2011,2012,108,1,1,1,2012,TRUE,0.9,2
+"OROUGHYNZMEC","Orange roughy","New Zealand",0.78,"Moderate turnover (0.4 ≤ M < 0.8)",1909,2011,103,0.155090863828728,2.94871794871795,0,1990,1991,1992,97,1,1,4,1994,TRUE,3.9,2
