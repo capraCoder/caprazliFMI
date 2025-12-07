@@ -34,7 +34,7 @@ The objectives of this study were to: (1) validate FMI as a diagnostic tool for 
 
 ### 2.1 Data source
 
-We obtained stock assessment data from the RAM Legacy Stock Assessment Database version 4.65 (Ricard et al., 2012; RAM Legacy, 2023). The database compiles time series of fishing mortality, biomass, and reference points from formal stock assessments conducted by management agencies worldwide. We extracted stocks meeting the following criteria: (1) natural mortality (*M*) estimate available in the bioparams table; (2) fishing mortality (*F*) time series available; (3) biomass relative to *B*~MSY~ (*B*/*B*~MSY~) time series available. After filtering, 209 stocks with 10,565 stock-years remained for analysis.
+We obtained stock assessment data from the RAM Legacy Stock Assessment Database version 4.64 (Ricard et al., 2012; RAM Legacy, 2024). The database compiles time series of fishing mortality, biomass, and reference points from formal stock assessments conducted by management agencies worldwide. We extracted stocks meeting the following criteria: (1) natural mortality (*M*) estimate available in the bioparams table; (2) fishing mortality (*F*) time series available; (3) biomass relative to *B*~MSY~ (*B*/*B*~MSY~) time series available. After filtering, 209 stocks with 10,565 stock-years remained for analysis.
 
 ### 2.2 FMI calculation
 
@@ -174,7 +174,7 @@ We thank the RAM Legacy Stock Assessment Database team for maintaining and provi
 
 ## Data availability
 
-The RAM Legacy Stock Assessment Database v4.65 is available at https://www.ramlegacy.org (DOI: 10.5281/zenodo.7708834). Analysis code is available at https://github.com/capraCoder/caprazliFMI and archived at Zenodo (DOI: 10.5281/zenodo.17844169).
+The RAM Legacy Stock Assessment Database v4.64 is available at https://www.ramlegacy.org (DOI: 10.5281/zenodo.10499086). Analysis code is available at https://github.com/capraCoder/caprazliFMI and archived at Zenodo (DOI: 10.5281/zenodo.17844169).
 
 ---
 
@@ -222,7 +222,7 @@ Pauly, D., 1980. On the interrelationships between natural mortality, growth par
 
 Prince, J.D., Hordyk, A., Graham, N.A.J., Loneragan, N., et al., 2015. Length-based SPR assessment of eleven Indo-Pacific coral reef fish populations in Palau. Fish. Res. 171, 42–58. https://doi.org/10.1016/j.fishres.2015.06.008
 
-RAM Legacy Stock Assessment Database, 2023. Version 4.65. https://doi.org/10.5281/zenodo.7708834
+RAM Legacy Stock Assessment Database, 2024. RAM Legacy Stock Assessment Database v4.64. Zenodo. https://doi.org/10.5281/zenodo.10499086
 
 Ricard, D., Minto, C., Jensen, O.P., Baum, J.K., 2012. Examining the knowledge base and status of commercially exploited marine species with the RAM Legacy Stock Assessment Database. Fish Fish. 13, 380–398.
 
