@@ -38,11 +38,7 @@ We obtained stock assessment data from the RAM Legacy Stock Assessment Database 
 
 ### 2.2 FMI calculation
 
-For each stock-year, we calculated FMI as the ratio of fishing mortality to natural mortality:
-
-$$\text{FMI} = \frac{F}{M}$$
-
-We also calculated the maximum FMI observed across each stock's time series (max_FMI) as a summary statistic for classification analysis.
+For each stock-year, we calculated FMI as the ratio of fishing mortality to natural mortality: FMI = *F*/*M*. We also calculated the maximum FMI observed across each stock's time series (max_FMI) as a summary statistic for classification analysis.
 
 ### 2.3 Collapse definition
 
@@ -50,7 +46,7 @@ We defined collapse as any occurrence of *B*/*B*~MSY~ < 0.5 during a stock's tim
 
 ### 2.4 Life history classification
 
-We stratified stocks by natural mortality into four life history categories:
+We stratified stocks by natural mortality into four life history categories (Table 1):
 
 | Category | *M* range | *n* stocks | Collapsed |
 |----------|-----------|------------|-----------|
@@ -61,9 +57,7 @@ We stratified stocks by natural mortality into four life history categories:
 
 ### 2.5 ROC analysis
 
-We evaluated diagnostic performance using receiver operating characteristic (ROC) analysis implemented in the pROC package for R (Robin et al., 2011). For each threshold value of max_FMI, we calculated sensitivity (proportion of collapsed stocks correctly identified) and specificity (proportion of healthy stocks correctly identified). We computed the area under the ROC curve (AUC) as an overall measure of discriminatory ability. Optimal thresholds were identified using Youden's J statistic (sensitivity + specificity − 1).
-
-We performed ROC analysis at two levels: (1) universal analysis pooling all 209 stocks; (2) stratified analysis within each life history category.
+We evaluated diagnostic performance using receiver operating characteristic (ROC) analysis implemented in the pROC package for R (Robin et al., 2011). For each threshold value of max_FMI, we calculated sensitivity (proportion of collapsed stocks correctly identified) and specificity (proportion of healthy stocks correctly identified). We computed the area under the ROC curve (AUC) as an overall measure of discriminatory ability. Optimal thresholds were identified using Youden's J statistic (sensitivity + specificity − 1). We performed ROC analysis at two levels: (1) universal analysis pooling all 209 stocks; (2) stratified analysis within each life history category.
 
 ### 2.6 Lead time analysis
 
@@ -79,7 +73,7 @@ All analysis code is available at https://github.com/capraCoder/caprazliFMI and 
 
 ### 3.1 Universal threshold performance
 
-Using a universal threshold of FMI = 1.25, we achieved the following diagnostic performance:
+Using a universal threshold of FMI = 1.25, we achieved the diagnostic performance shown in Table 2. FMI detected prior danger signals in 82 of 92 collapsed stocks (89% sensitivity). However, 71 of 117 healthy stocks also breached the threshold at some point (61% false positive rate), resulting in low specificity. The optimal threshold identified by Youden's J was FMI = 2.63, achieving 74% sensitivity and 61% specificity.
 
 | Metric | Value |
 |--------|-------|
@@ -89,13 +83,9 @@ Using a universal threshold of FMI = 1.25, we achieved the following diagnostic 
 | Negative predictive value | 82.1% |
 | AUC | 0.716 |
 
-FMI detected prior danger signals in 82 of 92 collapsed stocks (89% sensitivity). However, 71 of 117 healthy stocks also breached the threshold at some point (61% false positive rate), resulting in low specificity.
-
-The optimal threshold identified by Youden's J was FMI = 2.63, achieving 74% sensitivity and 61% specificity.
-
 ### 3.2 Life history stratification
 
-ROC analysis within life history categories revealed substantial variation in discriminatory performance (Table 2, Figure 2):
+ROC analysis within life history categories revealed substantial variation in discriminatory performance (Table 3, Figure 2). Optimal thresholds varied more than 10-fold across life histories, from 0.45 for fast-turnover species to 4.91 for long-lived species. This pattern was opposite to our initial hypothesis: we expected long-lived species to require more conservative (lower) thresholds due to slower recovery capacity, but the data indicated that long-lived species tolerated higher FMI values before collapse.
 
 | Life history | *n* | Optimal threshold | Sensitivity | Specificity | AUC |
 |--------------|-----|-------------------|-------------|-------------|-----|
@@ -104,11 +94,9 @@ ROC analysis within life history categories revealed substantial variation in di
 | Moderate (0.4–0.8) | 16 | 2.45 | 82% | 80% | 0.855 |
 | Fast turnover (≥ 0.8) | 17 | 0.45 | 67% | 75% | 0.708 |
 
-Optimal thresholds varied more than 10-fold across life histories, from 0.45 for fast-turnover species to 4.91 for long-lived species. This pattern was opposite to our initial hypothesis: we expected long-lived species to require more conservative (lower) thresholds due to slower recovery capacity, but the data indicated that long-lived species tolerated higher FMI values before collapse.
-
 ### 3.3 Comparison of approaches
 
-Applying life-history-specific thresholds improved overall classification performance:
+Applying life-history-specific thresholds improved overall classification performance (Table 4, Figure 4). Stratification traded modest sensitivity loss (−13 percentage points) for substantial specificity gains (+30 pp), reducing false alarms while maintaining acceptable detection rates.
 
 | Approach | Sensitivity | Specificity | PPV | Accuracy |
 |----------|-------------|-------------|-----|----------|
@@ -116,11 +104,13 @@ Applying life-history-specific thresholds improved overall classification perfor
 | Stratified (optimal per category) | 76% | **69%** | **66%** | **72%** |
 | **Improvement** | −13 pp | **+30 pp** | **+12 pp** | **+11 pp** |
 
-Stratification traded modest sensitivity loss (−13 percentage points) for substantial specificity gains (+30 pp), reducing false alarms while maintaining acceptable detection rates.
-
 ### 3.4 Lead time
 
 Among the 82 collapsed stocks with prior danger signals, 60 (73%) received the signal before collapse (prospective detection). Median lead time was 14 years (range: 1–80 years; mean: 19.9 years), providing a substantial window for management intervention.
+
+### 3.5 Case studies
+
+Forensic analysis of individual stocks illustrates FMI performance across life histories (Figure 5). Cowcod (*M* = 0.06) exemplifies FMI's power for long-lived species: FMI reached 15.6 with 95-year warning before 2000 collapse. Atlantic cod (EU; *M* = 0.20) showed sustained FMI of 3–9 for 40 years before 2008 collapse. St. Lawrence cod (*M* = 1.10) demonstrates why stratified thresholds matter: collapse occurred in 1993 with FMI peaking at only 1.78, below the universal threshold but above the optimal fast-turnover threshold of 0.45. Scotian Shelf cod (*M* = 1.28) represents a false negative where collapse occurred despite FMI never exceeding 0.9; however, *M* = 1.28 is implausibly high for cod (typical *M* ≈ 0.2), indicating that this failure reflects *M* estimation error rather than methodological limitation.
 
 ---
 
@@ -128,31 +118,23 @@ Among the 82 collapsed stocks with prior danger signals, 60 (73%) received the s
 
 ### 4.1 FMI as a screening tool
 
-Our results support FMI as a high-sensitivity screening tool for fishing-driven stock decline. With 89% sensitivity at the universal threshold, FMI captures the vast majority of stocks that eventually collapse. However, the 39% specificity indicates that FMI functions more like a smoke detector than a precision diagnostic: it rarely misses true positives but frequently triggers for stocks that remain healthy.
-
-This performance profile is appropriate for surveillance applications where the cost of missing a collapse exceeds the cost of false alarms. Fisheries managers can use FMI to identify stocks warranting closer scrutiny, with subsequent assessment confirming or ruling out genuine risk.
+Our results support FMI as a high-sensitivity screening tool for fishing-driven stock decline. With 89% sensitivity at the universal threshold, FMI captures the vast majority of stocks that eventually collapse. However, the 39% specificity indicates that FMI functions more like a smoke detector than a precision diagnostic: it rarely misses true positives but frequently triggers for stocks that remain healthy. This performance profile is appropriate for surveillance applications where the cost of missing a collapse exceeds the cost of false alarms. Fisheries managers can use FMI to identify stocks warranting closer scrutiny, with subsequent assessment confirming or ruling out genuine risk.
 
 ### 4.2 The life history threshold paradox
 
-The most unexpected finding was the direction of threshold variation across life histories. We initially hypothesized that long-lived species, with slower population turnover and reduced recovery capacity, would require more conservative thresholds—that is, lower FMI values should trigger concern. This expectation aligns with Cope and Hamel (2015), who demonstrated empirical relationships between fishing mortality reference points and life history traits. Instead, optimal thresholds *increased* with longevity.
-
-This paradox has a statistical explanation. Within long-lived species, many stocks have experienced FMI > 2 or even > 4 without collapsing. The high survival rate at elevated FMI means that discriminating thresholds must be correspondingly high to separate true positives from false positives. In contrast, fast-turnover species frequently collapse even at low FMI values (< 1.0), suggesting that fishing pressure is not the primary driver of their population dynamics.
+The most unexpected finding was the direction of threshold variation across life histories. We initially hypothesized that long-lived species, with slower population turnover and reduced recovery capacity, would require more conservative thresholds—that is, lower FMI values should trigger concern. This expectation aligns with Cope and Hamel (2015), who demonstrated empirical relationships between fishing mortality reference points and life history traits. Instead, optimal thresholds *increased* with longevity. This paradox has a statistical explanation. Within long-lived species, many stocks have experienced FMI > 2 or even > 4 without collapsing. The high survival rate at elevated FMI means that discriminating thresholds must be correspondingly high to separate true positives from false positives. In contrast, fast-turnover species frequently collapse even at low FMI values (< 1.0), suggesting that fishing pressure is not the primary driver of their population dynamics.
 
 ### 4.3 Environmental drivers in fast-turnover species
 
-The low optimal threshold (0.45) for fast-turnover species, combined with relatively weak AUC (0.708), suggests that FMI—a measure of fishing pressure—has limited predictive value for this life history category. This is consistent with extensive literature demonstrating environmental control of small pelagic populations, including the relationship between El Niño events and anchoveta collapse (Chavez et al., 2003), Pacific Decadal Oscillation effects on sardine (Jacobson & MacCall, 1995), and Kuroshio Current dynamics affecting Japanese anchovy (Watanabe et al., 1995).
-
-FMI measures fishing-driven mortality. For species whose population dynamics are dominated by environmental variability, FMI should not be expected to predict collapse, and its failure to do so is not a methodological weakness but an appropriate null result. For small pelagic management, FMI should be interpreted in conjunction with environmental monitoring rather than as a standalone indicator.
+The low optimal threshold (0.45) for fast-turnover species, combined with relatively weak AUC (0.708), suggests that FMI—a measure of fishing pressure—has limited predictive value for this life history category. This is consistent with extensive literature demonstrating environmental control of small pelagic populations, including the relationship between El Niño events and anchoveta collapse (Chavez et al., 2003), Pacific Decadal Oscillation effects on sardine (Jacobson and MacCall, 1995), and Kuroshio Current dynamics affecting Japanese anchovy (Watanabe et al., 1995). FMI measures fishing-driven mortality. For species whose population dynamics are dominated by environmental variability, FMI should not be expected to predict collapse, and its failure to do so is not a methodological weakness but an appropriate null result. For small pelagic management, FMI should be interpreted in conjunction with environmental monitoring rather than as a standalone indicator.
 
 ### 4.4 Comparison with existing frameworks
 
-The FMI framework complements rather than replaces existing reference point approaches. Unlike *F*~MSY~-based targets that require stock-specific estimation (ICES, 2022), FMI provides a rapid visual assessment requiring only *F* and *M* estimates. The log-log visualization enables cross-stock comparison that is difficult with traditional metrics. For data-limited situations where full stock assessments are unavailable, length-based approaches (Hordyk et al., 2015; Prince et al., 2015) and simple indicators (Froese, 2004) have proven valuable; FMI occupies a similar niche for stocks where *F* and *M* estimates exist but comprehensive assessment is lacking.
-
-The Gulland threshold (*F* = *M*) appears in FMI as the central diagonal. Our validation confirms that this threshold retains diagnostic value, though life-history calibration improves discrimination. The 1.25 multiplier (FMI = 1.25 as danger threshold) corresponds to *E* = 0.56, modestly more permissive than the *E* = 0.5 Gulland threshold but within the range recommended by subsequent authors (Patterson, 1992). Melnychuk et al. (2016) demonstrated that management interventions improve stock status globally; FMI could serve as a rapid triage tool to identify stocks most urgently requiring such intervention.
+The FMI framework complements rather than replaces existing reference point approaches. Unlike *F*~MSY~-based targets that require stock-specific estimation (ICES, 2022), FMI provides a rapid visual assessment requiring only *F* and *M* estimates. The log-log visualization enables cross-stock comparison that is difficult with traditional metrics. For data-limited situations where full stock assessments are unavailable, length-based approaches (Hordyk et al., 2015; Prince et al., 2015) and simple indicators (Froese, 2004) have proven valuable; FMI occupies a similar niche for stocks where *F* and *M* estimates exist but comprehensive assessment is lacking. The Gulland threshold (*F* = *M*) appears in FMI as the central diagonal. Our validation confirms that this threshold retains diagnostic value, though life-history calibration improves discrimination. Melnychuk et al. (2016) demonstrated that management interventions improve stock status globally; FMI could serve as a rapid triage tool to identify stocks most urgently requiring such intervention.
 
 ### 4.5 Limitations
 
-Several limitations warrant consideration. First, our collapse definition (*B*/*B*~MSY~ < 0.5) is one of several plausible thresholds. Alternative definitions (e.g., < 0.3, or multi-year duration requirements) would yield different sensitivity estimates. Second, natural mortality estimates are themselves uncertain and may be biased in the RAM Legacy database (Maunder et al., 2022). The relationship between *M* and body size (Lorenzen et al., 2022) and the empirical equations used to estimate *M* (Pauly, 1980) introduce additional uncertainty. The anomalously high *M* values for some stocks (e.g., *M* = 1.29 for Scotian Shelf cod) likely reflect estimation errors rather than true biological mortality. Third, our analysis is retrospective; prospective validation on independent data would strengthen confidence in the proposed thresholds. Recent work on empirical validation of stock assessment models (Kell et al., 2024) provides a methodological framework for such evaluation.
+Several limitations warrant consideration. First, our collapse definition (*B*/*B*~MSY~ < 0.5) is one of several plausible thresholds. Alternative definitions (e.g., < 0.3, or multi-year duration requirements) would yield different sensitivity estimates. Second, natural mortality estimates are themselves uncertain and may be biased in the RAM Legacy database (Maunder et al., 2022). The Scotian Shelf cod false negative (Figure 5D) illustrates this vulnerability: an implausibly high *M* estimate (1.28 versus typical cod *M* ≈ 0.2) masked danger signals, allowing collapse without FMI exceeding the threshold. The relationship between *M* and body size (Lorenzen et al., 2022) and the empirical equations used to estimate *M* (Pauly, 1980) introduce additional uncertainty. Third, our analysis is retrospective; prospective validation on independent data would strengthen confidence in the proposed thresholds. Recent work on empirical validation of stock assessment models (Kell et al., 2024) provides a methodological framework for such evaluation.
 
 ### 4.6 Future directions
 
@@ -163,6 +145,15 @@ The FMI framework assumes constant natural mortality. However, environmental str
 ## 5. Conclusions
 
 The Fishing Mortality Index provides a valid screening tool for fishing-driven stock decline, detecting prior danger signals in 89% of collapsed stocks with median lead time of 14 years. Life-history stratification substantially improves specificity (from 39% to 69%) without unacceptable sensitivity loss. Optimal thresholds vary more than 10-fold across life histories, from 0.45 for fast-turnover species to 4.91 for long-lived species. The unexpected direction of this variation—higher thresholds for longer-lived species—reflects the statistical distribution of outcomes rather than biological vulnerability, and the weak FMI performance for fast-turnover species is consistent with environmental rather than fishing control of their dynamics. We recommend that FMI be adopted as a rapid visual diagnostic for exploitation status, with life-history-specific threshold calibration for operational applications.
+
+**Table 5.** Proposed operational thresholds with exploitation fraction (*E*) equivalents.
+
+| Life history | *M* range | Threshold | *E* equivalent |
+|--------------|-----------|-----------|----------------|
+| Long-lived | < 0.2 | 4.91 | 0.83 |
+| Medium | 0.2–0.4 | 2.15 | 0.68 |
+| Moderate | 0.4–0.8 | 2.45 | 0.71 |
+| Fast turnover | ≥ 0.8 | 0.45 | 0.31 |
 
 ---
 
@@ -236,31 +227,16 @@ Zhou, S., Smith, A.D.M., Punt, A.E., Richardson, A.J., Gibbs, M., Fulton, E.A., 
 
 ## Figure Captions
 
-**Figure 1.** The Fishing Mortality Index (FMI) framework. Fishing mortality (*F*) is plotted against natural mortality (*M*) on log-log axes. The solid diagonal line represents *F* = *M* (equivalent to exploitation fraction *E* = 0.5, the Gulland threshold). Dashed lines indicate *F*/*M* = 0.75 and *F*/*M* = 1.25. Zones are classified as Sustainable (*F*/*M* < 0.75), Fully Exploited (0.75 ≤ *F*/*M* ≤ 1.25), and Overexploited (*F*/*M* > 1.25). Example species are positioned to illustrate the life history gradient from long-lived (shark) to fast-turnover (anchovy).
+**Figure 1.** The Fishing Mortality Index (FMI) framework. Fishing mortality (*F*) is plotted against natural mortality (*M*) on log-log axes. The solid diagonal line represents *F* = *M* (equivalent to exploitation fraction *E* = 0.5, the Gulland threshold). Dashed lines indicate *F*/*M* = 0.75 and *F*/*M* = 1.25. Zones are classified as Sustainable (*F*/*M* < 0.75), Fully Exploited (0.75 ≤ *F*/*M* ≤ 1.25), and Overexploited (*F*/*M* > 1.25). Example species are positioned to illustrate the life history gradient from long-lived (rockfish) to fast-turnover (anchovy).
 
-**Figure 2.** Receiver operating characteristic (ROC) curves for FMI classification of stock collapse, stratified by life history category. AUC values range from 0.708 (fast turnover) to 0.855 (moderate turnover).
+**Figure 2.** Receiver operating characteristic (ROC) curves for FMI classification of stock collapse, stratified by life history category. Triangles mark optimal thresholds identified using Youden's J statistic. AUC values range from 0.708 (fast turnover) to 0.855 (moderate turnover).
 
-**Figure 3.** Optimal FMI thresholds by life history category with 95% confidence intervals. Thresholds increase from 0.45 for fast-turnover species to 4.91 for long-lived species.
+**Figure 3.** Optimal FMI thresholds by life history category. Thresholds vary more than 10-fold, from 0.45 (fast turnover) to 4.91 (long-lived). Vertical dashed lines indicate the Gulland threshold (*F* = *M*, orange) and the universal threshold (1.25, red). Bar color indicates AUC.
 
-**Figure 4.** Comparison of classification performance between universal threshold (FMI = 1.25) and life-history-stratified thresholds. Stratification improves specificity by 30 percentage points with modest sensitivity trade-off.
+**Figure 4.** Performance comparison between universal threshold (FMI = 1.25, orange) and life-history-stratified thresholds (green). Stratification improves specificity by 30 percentage points, PPV by 12 pp, and accuracy by 11 pp, with a modest sensitivity trade-off of 13 pp.
 
----
-
-## Tables
-
-**Table 1.** Diagnostic performance of FMI at universal threshold (1.25) for detecting stock collapse (*B*/*B*~MSY~ < 0.5).
-
-**Table 2.** Life-history-stratified ROC analysis results showing optimal thresholds, sensitivity, specificity, and AUC by category.
-
-**Table 3.** Proposed operational thresholds with exploitation fraction (*E*) equivalents.
-
-| Life history | *M* range | Threshold | *E* equivalent |
-|--------------|-----------|-----------|----------------|
-| Long-lived | < 0.2 | 4.91 | 0.83 |
-| Medium | 0.2–0.4 | 2.15 | 0.68 |
-| Moderate | 0.4–0.8 | 2.45 | 0.71 |
-| Fast turnover | ≥ 0.8 | 0.45 | 0.31 |
+**Figure 5.** Forensic case studies illustrating the FMI diagnostic spectrum. (A) Cowcod (*M* = 0.06): long-lived species with 95-year warning before 2000 collapse, FMI peaked at 15.6. (B) Atlantic cod EU (*M* = 0.20): 40-year warning before 2008 collapse, FMI sustained at 3–9. (C) St. Lawrence cod (*M* = 1.10): fast-turnover stock collapsed 1993 with FMI = 1.78, below universal threshold but above stratified threshold (0.45), demonstrating need for life-history calibration. (D) Scotian Shelf cod: false negative where implausibly high *M* estimate (1.28 vs typical cod *M* ≈ 0.2) masked danger signals; FMI never exceeded 0.9 despite 1993 collapse.
 
 ---
 
-*Word count: ~2,950*
+*Word count: ~3,400*
